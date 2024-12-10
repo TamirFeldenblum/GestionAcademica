@@ -1,6 +1,9 @@
+import Controller.CursadaAlumnoController;
+import Controller.CursadaController;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import io.javalin.plugin.rendering.JavalinRenderer;
+import model.CursadaAlumno;
 import utils.HandlebarsRenderer;
 import Controller.AlumnoController;
 
@@ -8,7 +11,7 @@ import Controller.AlumnoController;
 public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
-         //   config.addStaticFiles("/public", Location.CLASSPATH); // Archivos estáticos
+            config.addStaticFiles("/public", Location.CLASSPATH); // Archivos estáticos
             config.enableDevLogging(); // Logs detallados
         }).start(7000);
 
@@ -21,6 +24,10 @@ public class Main {
         // Rutas
         app.get("/alumnos", AlumnoController.listarAlumnos); // Listar alumnos
         app.get("/asignaturas/{legajo}", AlumnoController.asignaturasPorAlumno);
+
+        app.get("/editar-nota/{id}", CursadaAlumnoController.editarNota);
+        app.post("/guardar-nota", CursadaAlumnoController.guardarNota);
+
 
     }
 }

@@ -2,18 +2,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asignaturas Cursadas</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <h1>Asignaturas Cursadas</h1>
-    <table border="1">
+    <table>
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
                 <th>Materia</th>
                 <th>Año</th>
                 <th>Cuatrimestre</th>
+                <th>Nota Parcial 1</th>
+                <th>Nota Parcial 2</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +105,15 @@
                 <td>{{this.[2]}}</td>
                 <td>{{this.[3]}}</td>
                 <td>{{this.[4]}}</td>
+                <td>
+                    <a href="/editar-nota/{{this.[5]}}" class="btn">Editar Nota</a>
+                </td>
             </tr>
         {{/each}}
         </tbody>
     </table>
+    <div class="footer">
+        &copy; 2024 Sistema de Gestión Académica
+    </div>
 </body>
 </html>

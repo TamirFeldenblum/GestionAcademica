@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Nota</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Nota</h1>
+    <form method="post" action="/guardar-nota">
+        <input type="hidden" name="id" value="{{cursadaAlumno.id}}">
+        <label for="notaParcial1">Nota Parcial 1:</label>
+        <input type="text" id="notaParcial1" name="notaParcial1" value="{{cursadaAlumno.notaParcial1}}">
+        <label for="notaParcial2">Nota Parcial 2:</label>
+        <input type="text" id="notaParcial2" name="notaParcial2" value="{{cursadaAlumno.notaParcial2}}">
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+</html>

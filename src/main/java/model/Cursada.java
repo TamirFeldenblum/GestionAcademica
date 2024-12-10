@@ -24,16 +24,11 @@ public class Cursada {
     private LocalDate fechaFin;
 
     @ManyToOne
-    @JoinColumn(name = "materia_id")
+    @JoinColumn(name = "materia_id", nullable = false)
     private Materia materia;
 
-    @ManyToMany
-    @JoinTable(
-            name = "cursada_alumnos",
-            joinColumns = @JoinColumn(name = "cursada_id"),
-            inverseJoinColumns = @JoinColumn(name = "alumno_id")
-    )
-    private List<Alumno> alumnos;
+    @OneToMany(mappedBy = "cursada", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CursadaAlumno> cursadaAlumnos;
 
     public Cursada() {}
 
@@ -86,11 +81,11 @@ public class Cursada {
         this.materia = materia;
     }
 
-    public List<Alumno> getAlumnos() {
-        return alumnos;
+    public List<CursadaAlumno> getCursadaAlumnos() {
+        return cursadaAlumnos;
     }
 
-    public void setAlumnos(List<Alumno> alumnos) {
-        this.alumnos = alumnos;
+    public void setCursadaAlumnos(List<CursadaAlumno> cursadaAlumnos) {
+        this.cursadaAlumnos = cursadaAlumnos;
     }
 }

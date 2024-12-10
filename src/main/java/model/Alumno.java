@@ -31,16 +31,8 @@ public class Alumno {
     @Column(name = "fecha_nacimiento", nullable = false)
     private LocalDate fechaNacimiento;
 
-    @ManyToMany(mappedBy = "alumnos")
-    private List<Cursada> cursadas;
-
-    @ManyToMany
-    @JoinTable(
-            name = "alumno_materias",
-            joinColumns = @JoinColumn(name = "alumno_id"),
-            inverseJoinColumns = @JoinColumn(name = "materia_id")
-    )
-    private Set<Materia> materias = new HashSet<>();
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CursadaAlumno> cursadaAlumnos;
 
     public Alumno() {}
 
@@ -101,19 +93,11 @@ public class Alumno {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public List<Cursada> getCursadas() {
-        return cursadas;
+    public List<CursadaAlumno> getCursadaAlumnos() {
+        return cursadaAlumnos;
     }
 
-    public void setCursadas(List<Cursada> cursadas) {
-        this.cursadas = cursadas;
-    }
-
-    public Set<Materia> getMaterias() {
-        return materias;
-    }
-
-    public void setMaterias(Set<Materia> materias) {
-        this.materias = materias;
+    public void setCursadaAlumnos(List<CursadaAlumno> cursadaAlumnos) {
+        this.cursadaAlumnos = cursadaAlumnos;
     }
 }

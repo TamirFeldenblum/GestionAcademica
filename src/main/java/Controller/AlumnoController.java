@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import model.Alumno;
 import model.Cursada;
+import model.CursadaAlumno;
 
 public class AlumnoController {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestionAcademicaPU");
@@ -22,30 +23,33 @@ public class AlumnoController {
     };
 
     public static Handler asignaturasPorAlumno = ctx -> {
-        System.out.println("Handler asignaturasPorAlumno invocado");
         String legajo = ctx.pathParam("legajo");
-        System.out.println("Legajo recibido: " + legajo);
         EntityManager em = emf.createEntityManager();
 
         try {
-            // Consulta directa para obtener materias basadas en el legajo del alumno
             List<Object[]> resultados = em.createQuery(
-                    "SELECT a.nombre, a.apellido, m.nombre, c.anio, c.cuatrimestre " +
-                            "FROM Alumno a " +
-                            "JOIN a.cursadas c " +
+                    "SELECT m.nombre, c.anio, c.cuatrimestre, ca.notaParcial1, ca.notaParcial2, ca.id " +
+                            "FROM CursadaAlumno ca " +
+                            "JOIN ca.cursada c " +
+                            "JOIN ca.alumno a " +
                             "JOIN c.materia m " +
                             "WHERE a.legajo = :legajo"
             ).setParameter("legajo", legajo).getResultList();
 
-            // Renderizar los datos a la plantilla
-            ctx.render("/templates/asignaturas.hbs", Map.of("resultados", resultados));
+            if (resultados.isEmpty()) {
+                ctx.status(404).result("No se encontraron asignaturas para el alumno con legajo " + legajo);
+            } else {
+                ctx.render("/templates/asignaturas.hbs", Map.of("resultados", resultados));
+            }
         } catch (Exception e) {
-            ctx.status(404).result("No se encontraron asignaturas para el alumno con legajo " + legajo);
+            e.printStackTrace();
+            ctx.status(500).result("Error al obtener asignaturas");
         } finally {
             em.close();
         }
     };
 
 
-
 }
+
+

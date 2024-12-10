@@ -22,6 +22,5 @@ public class Main {
         app.get("/alumnos", AlumnoController.listarAlumnos); // Listar alumnos
         app.get("/asignaturas/{legajo}", AlumnoController.asignaturasPorAlumno);
 
-
     }
 }

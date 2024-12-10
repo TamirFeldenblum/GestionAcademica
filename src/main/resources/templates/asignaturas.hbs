@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignaturas Cursadas</title>
+</head>
+<body>
+    <h1>Asignaturas Cursadas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Materia</th>
+                <th>Año</th>
+                <th>Cuatrimestre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each resultados}}
+            <tr>
+                <td>{{this.[0]}}</td>
+                <td>{{this.[1]}}</td>
+                <td>{{this.[2]}}</td>
+                <td>{{this.[3]}}</td>
+                <td>{{this.[4]}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

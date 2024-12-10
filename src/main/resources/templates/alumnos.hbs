@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Alumnos</title>
+</head>
+<body>
+    <h1>Listado de Alumnos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Legajo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Tipo Documento</th>
+                <th>Número Documento</th>
+                <th>Fecha de Nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each alumnos}}
+            <tr>
+                <td>{{legajo}}</td>
+                <td>{{nombre}}</td>
+                <td>{{apellido}}</td>
+                <td>{{tipoDocumento}}</td>
+                <td>{{numeroDocumento}}</td>
+                <td>{{fechaNacimiento}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

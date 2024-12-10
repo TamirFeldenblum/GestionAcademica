@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Alumnos</title>
+</head>
+<body>
+<h1>Listado de Alumnos</h1>
+<ul id="alumnos-list"></ul>
+
+<script>
+    // Cargar datos de alumnos desde la API
+    fetch('/api/alumnos')
+        .then(response => response.json())
+        .then(data => {
+            const lista = document.getElementById('alumnos-list');
+            data.forEach(alumno => {
+                const item = document.createElement('li');
+                item.textContent = `${alumno.nombre} (${alumno.id})`;
+                lista.appendChild(item);
+            });
+        })
+        .catch(error => console.error('Error al cargar los alumnos:', error));
+</script>
+</body>
+</html>

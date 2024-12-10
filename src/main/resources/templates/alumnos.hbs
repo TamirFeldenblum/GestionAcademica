@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de Alumnos</title>
+    <title>Lista de Alumnos</title>
 </head>
 <body>
-    <h1>Listado de Alumnos</h1>
-    <table>
+    <h1>Lista de Alumnos</h1>
+    <table border="1">
         <thead>
             <tr>
                 <th>Legajo</th>
@@ -15,10 +15,11 @@
                 <th>Tipo Documento</th>
                 <th>Número Documento</th>
                 <th>Fecha de Nacimiento</th>
+                <th>Asignaturas</th>
             </tr>
         </thead>
         <tbody>
-            {{#each alumnos}}
+        {{#alumnos}}
             <tr>
                 <td>{{legajo}}</td>
                 <td>{{nombre}}</td>
@@ -26,8 +27,9 @@
                 <td>{{tipoDocumento}}</td>
                 <td>{{numeroDocumento}}</td>
                 <td>{{fechaNacimiento}}</td>
+                <td><a href="/asignaturas/{{legajo}}">Ver Asignaturas</a></td>
             </tr>
-            {{/each}}
+        {{/alumnos}}
         </tbody>
     </table>
 </body>

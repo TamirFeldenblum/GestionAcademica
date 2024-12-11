@@ -12,13 +12,11 @@ public class CursadaController {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestionAcademicaPU");
 
-    // Handler para mostrar el formulario de edición de notas
     public static Handler editarNotas = ctx -> {
         Long id = Long.parseLong(ctx.pathParam("id"));
         EntityManager em = emf.createEntityManager();
 
         try {
-            // Obtener la relación CursadaAlumno por su ID
             CursadaAlumno cursadaAlumno = em.find(CursadaAlumno.class, id);
 
             if (cursadaAlumno == null) {
@@ -26,7 +24,6 @@ public class CursadaController {
                 return;
             }
 
-            // Renderizar la vista con la información actual
             ctx.render("/templates/editar_notas.hbs", Map.of(
                     "cursadaAlumno", cursadaAlumno
             ));
@@ -35,7 +32,6 @@ public class CursadaController {
         }
     };
 
-    // Handler para procesar el formulario y guardar las notas
     public static Handler guardarNotas = ctx -> {
         Long id = Long.parseLong(ctx.pathParam("id"));
         Double nota1 = Double.parseDouble(ctx.formParam("nota1"));

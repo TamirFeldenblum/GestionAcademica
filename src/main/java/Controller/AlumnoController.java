@@ -14,7 +14,6 @@ import model.CursadaAlumno;
 public class AlumnoController {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestionAcademicaPU");
 
-    // Handler para listar alumnos
     public static Handler listarAlumnos = ctx -> {
         EntityManager em = emf.createEntityManager();
         List<Alumno> alumnos = em.createQuery("FROM Alumno", Alumno.class).getResultList();

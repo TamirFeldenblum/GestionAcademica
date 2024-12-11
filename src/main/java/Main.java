@@ -11,18 +11,17 @@ import Controller.AlumnoController;
 public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
-            config.addStaticFiles("/public", Location.CLASSPATH); // Archivos estáticos
-            config.enableDevLogging(); // Logs detallados
+            config.addStaticFiles("/public", Location.CLASSPATH);
+            config.enableDevLogging();
         }).start(7000);
 
         System.out.println("MAIN TAMIR: ");
 
-        // Registrar el renderizador Handlebars
         JavalinRenderer.register(new HandlebarsRenderer(), ".hbs");
 
 
         // Rutas
-        app.get("/alumnos", AlumnoController.listarAlumnos); // Listar alumnos
+        app.get("/alumnos", AlumnoController.listarAlumnos);
         app.get("/asignaturas/{legajo}", AlumnoController.asignaturasPorAlumno);
 
         app.get("/editar-nota/{id}", CursadaAlumnoController.editarNota);

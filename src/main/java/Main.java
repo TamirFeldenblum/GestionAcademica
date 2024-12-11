@@ -19,7 +19,6 @@ public class Main {
 
         JavalinRenderer.register(new HandlebarsRenderer(), ".hbs");
 
-
         // Rutas
         app.get("/alumnos", AlumnoController.listarAlumnos);
         app.get("/asignaturas/{legajo}", AlumnoController.asignaturasPorAlumno);

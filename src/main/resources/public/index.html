@@ -2,16 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión Académica</title>
-    <link rel="stylesheet" href="/estilo.css">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .container p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h1>Bienvenido al Sistema de Gestión Académica</h1>
-<nav>
-    <ul>
-        <li><a href="/alumnos">Alumnos</a></li>
-        <li><a href="/materias">Materias</a></li>
-    </ul>
-</nav>
+<header>
+    <h1>Sistema de Gestión Académica</h1>
+</header>
+<div class="container">
+    <p>Bienvenido al sistema de gestión académica. Desde aquí puedes gestionar alumnos, asignaturas y más.</p>
+    <a href="/alumnos" class="btn">Ver Lista de Alumnos</a>
+</div>
+<footer>
+    &copy; 2024 Sistema de Gestión Académica. Todos los derechos reservados. |
+    <a href="https://javalin.io/">Documentación Javalin</a>
+</footer>
 </body>
 </html>

@@ -33,8 +33,19 @@ public class CursadaAlumnoController {
 
     public static Handler guardarNota = ctx -> {
         Long id = Long.valueOf(ctx.formParam("id"));
-        Double notaParcial1 = Double.valueOf(ctx.formParam("notaParcial1"));
-        Double notaParcial2 = Double.valueOf(ctx.formParam("notaParcial2"));
+        String notaParcial1Str = ctx.formParam("notaParcial1");
+        String notaParcial2Str = ctx.formParam("notaParcial2");
+
+        Double notaParcial1 = null;
+        Double notaParcial2 = null;
+
+        // Convertir valores solo si no están vacíos
+        if (notaParcial1Str != null && !notaParcial1Str.trim().isEmpty()) {
+            notaParcial1 = Double.valueOf(notaParcial1Str);
+        }
+        if (notaParcial2Str != null && !notaParcial2Str.trim().isEmpty()) {
+            notaParcial2 = Double.valueOf(notaParcial2Str);
+        }
 
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -58,5 +69,6 @@ public class CursadaAlumnoController {
             em.close();
         }
     };
+
 
 }
